@@ -1,5 +1,7 @@
 // Write a function that takes a number as an argument and returns 'even' or 'odd'.
 
+const evenOrOdd = num => num % 2 === 0 ? 'even' : 'odd';
+
 // console.log(evenOrOdd(5)); // Output: 'odd'
 // console.log(evenOrOdd(4)); // Output: 'even'
 
@@ -7,28 +9,41 @@
 
 // Create a function that checks if the length of a given string is greater than a specified number. Return true or false.
 
-// console.log(isStringLengthGreaterThan("Hello, World!", 5)); // Output: true
+const isStringLengthGreaterThan = str => str.length > 5 ? true : false;
 
-// console.log(isStringLengthGreaterThan("Hello", 5)); // Output: false
+//  console.log(isStringLengthGreaterThan("Hello, World!", 5)); // Output: true
+//  console.log(isStringLengthGreaterThan("Hello", 5)); // Output: false
 
 // ------------------------------------------------------------
 
 // Implement a function that concatenates two strings and returns the result.
 
-// console.log(concatenateStrings("Hello", "World")); // Output: 'HelloWorld'
+const concatenateStrings = (str1, str2) => str1.concat(str2);
+
+//console.log(concatenateStrings("Hello", "World")); // Output: 'HelloWorld'
 
 // ------------------------------------------------------------
 
 // Write a function using interpolation to generate a string that includes the value of a given variable.
 
+const interpolateVariable = (str, num) => `${str}${num}`;
+
 // console.log(interpolateVariable("My age is: ", 25)); // Output: 'My age is: 25'
 
-// console.log(interpolateVariable("My age is: ", 30)); // Output: 'My age is: 25'
+// console.log(interpolateVariable("My age is: ", 30)); // Output: 'My age is: 30'
 
 // ------------------------------------------------------------
 
 // Develop a function that calculates the sum of numbers in a given range.
 
+const sumRange = (range1, range2) => {
+    let acc = 0;
+    while(range1 <= range2){
+        acc += range1;
+        range1++;
+    }
+    return acc;
+}
 // console.log(sumRange(1, 5)); // Output: 15
 // console.log(sumRange(1, 6)); // Output: 21
 
@@ -36,33 +51,78 @@
 
 // Create a function that sums up all odd numbers in a given range using a loop.
 
-// console.log(sumOddNumbersInRange(1, 10)); // Output: 25
+const sumOddNumbersInRange = (start, end) => {
+    // let acc = 0;
+    // while(range1 <= range2){
+    //     if(range1 % 2 !== 0){
+    //         acc += range1;
+    //     }
+    //     range1++
+    // }
+    // return acc;
+
+    let sum = 0;
+    for(let i = start; i <= end; i++){
+        if(i % 2 === 1){
+            sum += i
+        }
+    }
+    return sum;
+}
+// console.log(sumOddNumbersInRange(7, 10)); // Output: 25
 // console.log(sumOddNumbersInRange(1, 11)); // Output: 36
 
 // ------------------------------------------------------------
 
 // Implement a function that returns the first element of an array.
 
+const getFirstElement = arr => arr.shift();
+
+// function getFirstElement (arr){
+//     if(arr.length > 0){
+//         return arr[0];
+//     }else{
+//         return "undefined";
+//     }
+// }
+
 // console.log(getFirstElement([1, 2, 3])); // Output: 1
-// console.log(getFirstElement([2, 3])); // Output: 2
+// console.log(getFirstElement([2,3])); // Output: 2
 
 // ------------------------------------------------------------
 
 // Write a function to get the last element of an array.
 
-// console.log(getLastElement([1, 2, 3])); // Output: 3
-// console.log(getLastElement([1, 2, 3, 4])); // Output: 4
+const getLastElement = arr => arr[arr.length - 1];
+
+// // function getLastElement (arr){
+//     if(arr.length > 0){
+//         return arr[arr.length - 1];
+//     } else {
+//         return "undefined";
+//     }
+// }
+//  console.log(getLastElement([1, 2, 3])); // Output: 3
+//  console.log(getLastElement([1, 2, 3, 4])); // Output: 4
 
 // ------------------------------------------------------------
 
 // Build a function to replace an element at a specific index in an array and returns the altered array.
 
+const replaceElementAtIndex = (arr, index, replacement) => {
+    arr.splice(index, 1, replacement);
+    return arr;
+}
+
+
 // console.log(replaceElementAtIndex([1, 2, 3], 1, 5)); // Output: [1, 5, 3]
-// console.log(replaceElementAtIndex([1, 2, 3], 2, 6)); // Output: [1, 5, 6]
+// console.log(replaceElementAtIndex([1, 2, 3], 2, 6)); // Output: [1, 2, 6]
 
 // ------------------------------------------------------------
 
 // Develop a function that removes an element from the beginning of an array.
+
+const removeFirstElement = arr => {arr.shift(); return arr;}
 
 // console.log(removeFirstElement([1, 2, 3])); // Output: [2, 3]
 // console.log(removeFirstElement([0, 1, 2, 3])); // Output: [1, 2, 3]
@@ -70,35 +130,44 @@
 // ------------------------------------------------------------
 
 // Create a function to remove an element from the end of an array and return the removed element.
-
+const removeLastElement = arr => arr.pop();
 // console.log(removeLastElement([1, 2, 3])); // Output: 3
 // console.log(removeLastElement([1, 2, 3, 4])); // Output: 4
 
 // ------------------------------------------------------------
 
 // Implement a function to remove an element at a given index in an array and returns the input array.
-
+const removeElementAtIndex = (arr,i) => {arr.splice(i, 1); return arr;}
 // console.log(removeElementAtIndex([1, 2, 3], 1)); // Output: [1, 3]
 // console.log(removeElementAtIndex([1, 2, 3], 2)); // Output: [1, 2]
 
 // ------------------------------------------------------------
 
 // Write a function that converts all characters in a string to uppercase.
-
+const toUpperCaseString = str => str.toUpperCase();
 // console.log(toUpperCaseString("hello")); // Output: 'HELLO'
 // console.log(toUpperCaseString("world")); // Output: 'WORLD'
 
 // ------------------------------------------------------------
 
 // Create a function to properly capitalize each word in a string of words.
-
+const capitalizeWords = str => {
+    let capWord = [], arrWords = str.split(" ");
+    for (let word of arrWords){
+      capWord.push(word[0].toUpperCase() + word.slice(1)); 
+    }
+    return capWord.join(" ");
+  }
 // console.log(capitalizeWords("hello world")); // Output: 'Hello World'
 // console.log(capitalizeWords("whats up joe?")); // Output: 'Whats Up Joe?'
 
 // ------------------------------------------------------------
 
 // Develop a function that returns the element at the middle index of an array.
-
+const getMidIndexElement = arr => {
+    let midIndex = arr.length / 2;
+    return arr[Math.floor(midIndex)];
+  }
 // console.log(getMidIndexElement([1, 2, 3, 4, 5])); // Output: 3
 
 // console.log(getMidIndexElement([1, 2, 3, 4, 5, 6, 7])); // Output: 4
@@ -106,21 +175,21 @@
 // ------------------------------------------------------------
 
 // Implement a function to calculate the sum of all numbers in an array.
-
+const sumArray = arr => arr.reduce((acc, ele) => acc += ele, 0);
 // console.log(sumArray([1, 2, 3, 4])); // Output: 10
 // console.log(sumArray([1, 2, 3, 4, 5])); // Output: 15
 
 // ------------------------------------------------------------
 
 // Create a function that returns the sum of all odd or even numbers in an array.
-
+const sumOddNumbersArray = arr => arr.reduce((acc, ele) => ele % 2 !== 0 ? acc += ele : acc, 0);
 // console.log(sumOddNumbersArray([1, 2, 3, 4])); // Output: 4
 // console.log(sumOddNumbersArray([1, 2, 3, 4, 5])); // Output: 9
 
 // ------------------------------------------------------------
 
 // Write a function to find the maximum number in an array using a loop and the accumulator pattern.
-
+const findMaxUsingLoop = arr => arr.reduce((acc, ele) => ele > acc ? ele : acc ,0)
 // console.log(findMaxUsingLoop([1, 5, 3, 8, 2])); // Output: 8
 // console.log(findMaxUsingLoop([1, 5, 3, 2])); // Output: 5
 
