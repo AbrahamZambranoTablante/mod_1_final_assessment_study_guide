@@ -196,7 +196,7 @@ const findMaxUsingLoop = arr => arr.reduce((acc, ele) => ele > acc ? ele : acc ,
 // ------------------------------------------------------------
 
 // Develop a function to find the minimum number in an array using the .reduce method.
-
+const findMinUsingReduce = arr => arr.reduce((acc, ele) => ele <= acc ? ele : acc)
 // console.log(findMinUsingReduce([1, 5, 3, 8, 2])); // Output: 1
 
 // console.log(findMinUsingReduce([5, 3, 8, 2])); // Output: 2
@@ -204,42 +204,63 @@ const findMaxUsingLoop = arr => arr.reduce((acc, ele) => ele > acc ? ele : acc ,
 // ------------------------------------------------------------
 
 // Create a function to find the maximum number in an array using Math.max.
-
+const findMaxUsingMathMax = arr => Math.max(...arr);
 // console.log(findMaxUsingMathMax([1, 5, 3, 8, 2])); // Output: 8
 // console.log(findMaxUsingMathMax([1, 5, 19, 8, 2])); // Output: 19
 
 // ------------------------------------------------------------
 
 // Implement a function to create a new array with all numbers doubled using a for loop and the accumulator pattern.
-
+const doubleNumbersUsingLoop = arr => {
+    const newArr = [];
+    for(let x of arr){
+      newArr.push(x*2);
+    }
+    return newArr;
+  };
 // console.log(doubleNumbersUsingLoop([1, 2, 3])); // Output: [2, 4, 6]
 // console.log(doubleNumbersUsingLoop([1, 3, 7, 10])); // Output: [2, 6, 14, 20]
 
 // ------------------------------------------------------------
 
 // Write a function to create a new array with all numbers doubled using the .map method.
-
+const doubleNumbersUsingMap = arr => arr.map(ele => ele*2)
 // console.log(doubleNumbersUsingMap([1, 2, 3])); // Output: [2, 4, 6]
 // console.log(doubleNumbersUsingLoop([1, 3, 7, 10])); // Output: [2, 6, 14, 20]
 
 // ------------------------------------------------------------
 
 // Develop a function to create a new array with only the odd numbers using a for loop and the accumulator pattern.
-
+const oddNumbersUsingLoop = arr => {
+    let newArr = [];
+    for(let x of arr){
+      if(x % 2 !== 0){
+        newArr.push(x);
+      }
+    }
+    return newArr;
+  }
 // console.log(oddNumbersUsingLoop([1, 2, 3])); // Output: [1, 3]
 // console.log(oddNumbersUsingLoop([2, 3, 4, 5, 6, 7])); // Output: [3, 5 ,7]
 
 // ------------------------------------------------------------
 
 // Create a function to create a new array with only the odd numbers using the .filter method.
-
+const oddNumbersUsingFilter = arr => arr.filter(x => x % 2 !== 0);
 // console.log(oddNumbersUsingFilter([1, 2, 3])); // Output: [1, 3]
 // console.log(oddNumbersUsingLoop([2, 3, 4, 5, 6, 7])); // Output: [3, 5 ,7]
 
 // ------------------------------------------------------------
 
 // Implement a function to find an element in an array using a for loop and the accumulator pattern. If the element can't be found in the array return an error string
-
+const findElementUsingLoop = (arr, element) => {
+    for(let x of arr){
+      if(x === element){
+        return element;
+      }
+    }
+    return "ERROR";
+  }
 // console.log(findElementUsingLoop([1, 2, 3], 2)); // Output: 2
 // console.log(findElementUsingLoop(["a", "b", "c", "d"], "c")); // Output: "c"
 // console.log(findElementUsingLoop([1, 2, 3, 4 ,5], 6)); // Output: "ERROR"
@@ -247,7 +268,10 @@ const findMaxUsingLoop = arr => arr.reduce((acc, ele) => ele > acc ? ele : acc ,
 // ------------------------------------------------------------
 
 // Write a function to find an element in an array using the .find method.
-
+const findElementUsingFind = (arr, elem) => {
+    let found = arr.find(x => x === elem);
+    return found !== undefined ? found : "ERROR";
+  }
 // console.log(findElementUsingLoop(["a", "b", "c", "d"], "c")); // Output: "c"
 // console.log(findElementUsingLoop([1, 2, 3, 4 ,5], 6)); // Output: "ERROR"
 
